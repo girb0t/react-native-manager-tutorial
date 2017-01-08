@@ -1,6 +1,6 @@
 export const emailChanged = (email) => {
   return {
-    type: 'EMAIL_UPDATE',
+    type: 'EMAIL_CHANGED',
     payload: email
   };
 };
