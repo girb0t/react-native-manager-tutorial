@@ -1,4 +1,4 @@
-export const onEmailChange = (email) => {
+export const emailChanged = (email) => {
   return {
     type: 'EMAIL_UPDATE',
     payload: email

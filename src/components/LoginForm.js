@@ -5,6 +5,10 @@ import { Card, CardSection, Input, Button } from './common';
 import * as actions from '../actions';
 
 class LoginForm extends Component {
+  onEmailChange(text) {
+    this.props.emailChanged(text);
+  }
+
   render() {
     return (
       <Card>
@@ -13,7 +17,7 @@ class LoginForm extends Component {
             label='Email'
             value={this.props.emailValue}
             placeholder='email@gmail.com'
-            onChangeText={email => this.props.onEmailChange(email)}
+            onChangeText={email => this.onEmailChange(email)}
           />
         </CardSection>
 
