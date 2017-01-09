@@ -14,12 +14,13 @@ class LoginForm extends Component {
   }
 
   render() {
+    const { emailValue, passwordValue } = this.props;
     return (
       <Card>
         <CardSection>
           <Input
             label='Email'
-            value={this.props.emailValue}
+            value={emailValue}
             placeholder='email@gmail.com'
             onChangeText={email => this.onEmailChange(email)}
           />
@@ -29,6 +30,7 @@ class LoginForm extends Component {
           <Input
             secureTextEntry
             label='Password'
+            value={passwordValue}
             placeholder='password'
             onChangeText={password => this.onPasswordChange(password)}
           />
@@ -46,7 +48,8 @@ class LoginForm extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    emailValue: state.auth.emailValue
+    emailValue: state.auth.emailValue,
+    passwordValue: state.auth.passwordValue
   };
 };
 
