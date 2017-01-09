@@ -1,6 +1,9 @@
 import { EMAIL_CHANGED, PASSWORD_CHANGED } from '../actions/types';
 
-const INITIAL_STATE = { emailValue: '' };
+const INITIAL_STATE = {
+  emailValue: '',
+  passwordValue: ''
+};
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
