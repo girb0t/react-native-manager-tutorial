@@ -41,7 +41,7 @@ class LoginForm extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    emailValue: state.loginForm.emailValue
+    emailValue: state.auth.emailValue
   };
 };
 
