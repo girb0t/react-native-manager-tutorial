@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+// see 'actions/index.js' for how redux-thunk works
+import ReduxThunk from 'redux-thunk';
 import firebase from 'firebase';
-import reducers from './reducers';
 
+import reducers from './reducers';
 import LoginForm from './components/LoginForm';
 
 
@@ -23,8 +25,12 @@ class App extends Component {
   }
 
   render() {
+    // 2nd argument is for any initial state we want to pass. Apparently it's mostly
+    // applicable to server-side rendering
+    const store = createStore(reducers, {}, applyMiddleware(ReduxThunk));
+
     return (
-      <Provider store={createStore(reducers)}>
+      <Provider store={store}>
         <View>
           <LoginForm />
         </View>
