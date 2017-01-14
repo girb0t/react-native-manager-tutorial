@@ -48,16 +48,14 @@ class LoginForm extends Component {
           />
         </CardSection>
 
+        <Text style={alertDangerStyle}>
+          { this.props.errorMessage }
+        </Text>
+
         <CardSection>
           <Button onPress={this.onButtonPress.bind(this)}>
             Login
           </Button>
-        </CardSection>
-
-        <CardSection>
-          <Text style={alertDangerStyle}>
-            { this.props.errorMessage }
-          </Text>
         </CardSection>
       </Card>
     );
@@ -67,8 +65,8 @@ class LoginForm extends Component {
 const styles = {
   alertDangerStyle: {
     color: 'red',
-    // fontSize: 20,
-    // alignSelf: 'center',
+    fontSize: 20,
+    alignSelf: 'center',
   }
 };
 
