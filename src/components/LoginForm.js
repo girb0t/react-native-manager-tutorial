@@ -33,7 +33,7 @@ class LoginForm extends Component {
         Login
       </Button>
     );
-  };
+  }
 
   render() {
     const { emailValue, passwordValue } = this.props;
