@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { Text } from 'react-native';
 import { connect } from 'react-redux';
 
-import { Card, CardSection, Input, Button } from './common';
+import { Card, CardSection, Input, Button, Spinner } from './common';
 import {
   emailChanged,
   passwordChanged,
-  loginUser
+  loginUser,
 } from '../actions';
 
 class LoginForm extends Component {
@@ -22,6 +22,18 @@ class LoginForm extends Component {
     const { emailValue, passwordValue } = this.props;
     this.props.loginUser({ emailValue, passwordValue });
   }
+
+  renderButton() {
+    if (this.props.loading) {
+      return <Spinner size="large" />;
+    }
+
+    return (
+      <Button onPress={this.onButtonPress.bind(this)}>
+        Login
+      </Button>
+    );
+  };
 
   render() {
     const { emailValue, passwordValue } = this.props;
@@ -53,9 +65,7 @@ class LoginForm extends Component {
         </Text>
 
         <CardSection>
-          <Button onPress={this.onButtonPress.bind(this)}>
-            Login
-          </Button>
+          { this.renderButton() }
         </CardSection>
       </Card>
     );
@@ -71,8 +81,8 @@ const styles = {
 };
 
 const mapStateToProps = (state) => {
-  const { emailValue, passwordValue, errorMessage } = state.auth;
-  return { emailValue, passwordValue, errorMessage };
+  const { emailValue, passwordValue, errorMessage, loading } = state.auth;
+  return { emailValue, passwordValue, errorMessage, loading };
 };
 
 export default connect(mapStateToProps, {
