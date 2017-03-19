@@ -28,17 +28,13 @@ class App extends Component {
   render() {
     // 2nd argument is for any initial state we want to pass. Apparently it's mostly
     // applicable to server-side rendering
+
+    // NOTE: DO NOT RAP <Router> IN <View> TAGS. It messes up the styling
+    // with the Router.
     const store = createStore(reducers, {}, applyMiddleware(ReduxThunk));
     return (
       <Provider store={store}>
-        <View>
           <Router />
-          {/*
-            Using router messes up styling for unknown reason.
-            Too see LoginForm use this instead:
-            <LoginForm />
-          */}
-        </View>
       </Provider>
     );
   }
